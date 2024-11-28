@@ -1,5 +1,6 @@
-export const Settings = () => {
+export const SettingView = () => {
   return (
     <div>settings</div>
   );
 }
+
