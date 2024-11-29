@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
-import { useClock } from "./useClock"
-import { useLocalStorage } from "./useLocalStorage";
+import { useCallback, useMemo, useState } from 'react';
+import { useClock } from './useClock'
+import { useLocalStorage } from './useLocalStorage';
 
 export type WstTime = {
   hour: string;
@@ -15,7 +15,6 @@ export type WstTime = {
 export type WstClockType = {
   wstTime: WstTime;
   handleChangeWakeUpTime: (wakeUpTime: number) => void;
-  handleChangeRealWakeUpTime: () => void;
   handleChangeResetTime: (resetTime: number) => void;
   wakeUpTime: number;
   resetTime: number;
@@ -35,7 +34,8 @@ export const useWstClock = (): WstClockType => {
   const ONE_DAY_MILLISECONDS = 86400000;
   const clock = useClock();
   const realTime = clock.unix;
-  const storedData = useLocalStorage<WstDates>("wstDates", { wakeUpTime: 0, realWakeUpTime: 0, resetTime: 0, isReseted: false });
+
+  const storedData = useLocalStorage<WstDates>('wstDates', { wakeUpTime: 6 * 3600 * 1000, realWakeUpTime: 6 * 3600 * 1000, resetTime: 4 * 3600 * 1000, isReseted: false });
   const [wstDates, setWstDates] = useState<WstDates>(storedData.storedValue);
   const wstTimeDate = new Date(realTime - wstDates.realWakeUpTime + wstDates.wakeUpTime);
 
@@ -58,12 +58,15 @@ export const useWstClock = (): WstClockType => {
   }
 
   const handleChangeWakeUpTime = useCallback((wakeUpTime: number) => {
-    setWstDates({ ...wstDates, wakeUpTime });
+    storedData.setValue({ ...wstDates, wakeUpTime });
   }, [setWstDates]);
 
   const wakeUp = useCallback(() => {
-    const newRealWakeUpTime = Date.now() % ONE_DAY_MILLISECONDS;
-    setWstDates({ ...wstDates, realWakeUpTime: newRealWakeUpTime });
+    const offset = new Date().getTimezoneOffset() * 60000;
+    const newRealWakeUpTime = Date.now() % ONE_DAY_MILLISECONDS - offset;
+    const newWstDates = { ...wstDates, realWakeUpTime: newRealWakeUpTime, isReseted: true };
+    setWstDates(newWstDates);
+    storedData.setValue(newWstDates);
   }, [setWstDates]);
 
   const handleChangeResetTime = useCallback((resetTime: number) => {
