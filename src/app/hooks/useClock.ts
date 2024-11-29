@@ -33,7 +33,6 @@ export const useClock = () => {
       minute: time.getMinutes().toString().padStart(2, '0'),
       second: time.getSeconds().toString().padStart(2, '0'),
     }),
-    [time]
+    [time],
   );
 };
-

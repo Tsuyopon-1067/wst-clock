@@ -1,4 +1,4 @@
-import { WstTime } from "../hooks/useWstClock";
+import { WstTime } from '../hooks/useWstClock';
 
 export const Digital = ({ time }: { time: WstTime }) => {
   return (
@@ -6,7 +6,7 @@ export const Digital = ({ time }: { time: WstTime }) => {
       <span className="text-6xl font-black text-gray-700">
         {time.hour}:{time.minute}:{time.second}
       </span>
-      <span className='ml-1 font-bold'>WST</span>
+      <span className="ml-1 font-bold">WST</span>
     </div>
   );
-}
+};

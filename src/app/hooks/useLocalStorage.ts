@@ -6,7 +6,7 @@ type UseLocalStorageType<T> = {
   removeValue: () => void;
 };
 
-export const useLocalStorage = <T,>(key: string, initialValue: T): UseLocalStorageType<T> => {
+export const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageType<T> => {
   const readValue = useCallback((): T => {
     try {
       const item = window.localStorage.getItem(key);
@@ -30,13 +30,13 @@ export const useLocalStorage = <T,>(key: string, initialValue: T): UseLocalStora
             key: key,
             newValue: JSON.stringify(valueToStore),
             storageArea: localStorage,
-          })
+          }),
         );
       } catch (error) {
         console.warn(`Error setting localStorage key "${key}":`, error);
       }
     },
-    [key, storedValue]
+    [key, storedValue],
   );
 
   const removeValue = useCallback(() => {
@@ -48,7 +48,7 @@ export const useLocalStorage = <T,>(key: string, initialValue: T): UseLocalStora
           key: key,
           newValue: null,
           storageArea: localStorage,
-        })
+        }),
       );
     } catch (error) {
       console.warn(`Error removing localStorage key "${key}":`, error);
