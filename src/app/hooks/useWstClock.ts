@@ -1,3 +1,5 @@
+`use client`;
+
 import { useCallback, useState } from 'react';
 import { useClock } from './useClock';
 import { useLocalStorage } from './useLocalStorage';
@@ -35,13 +37,20 @@ export const useWstClock = (): WstClockType => {
   const clock = useClock();
   const realTime = clock.unix;
 
-  const storedData = useLocalStorage<WstDates>('wstDates', {
+  const initialState = {
     wakeUpTime: 6 * 3600 * 1000,
     realWakeUpTime: 6 * 3600 * 1000,
     resetTime: 4 * 3600 * 1000,
     nextResetTime: 0,
-  });
-  const [wstDates, setWstDates] = useState<WstDates>(storedData.storedValue);
+  };
+  const getInitialState = () => {
+    if (typeof window === 'undefined') {
+      return initialState;
+    }
+    return storedData.storedValue;
+  };
+  const storedData = useLocalStorage<WstDates>('wstDates', initialState);
+  const [wstDates, setWstDates] = useState<WstDates>(getInitialState);
   const localRealWakeUpTime =
     (wstDates.realWakeUpTime - new Date().getTimezoneOffset() * 60000) % ONE_DAY_MILLISECONDS;
   const wstTimeDate = new Date(realTime - localRealWakeUpTime + wstDates.wakeUpTime);
@@ -68,7 +77,7 @@ export const useWstClock = (): WstClockType => {
     (wakeUpTime: number) => {
       setWstDates({ ...wstDates, wakeUpTime });
     },
-    [setWstDates],
+    [setWstDates, wstDates],
   );
 
   const wakeUp = useCallback(() => {
@@ -81,13 +90,13 @@ export const useWstClock = (): WstClockType => {
     };
     setWstDates(newWstDates);
     storedData.setValue(newWstDates);
-  }, [setWstDates]);
+  }, [setWstDates, wstDates, storedData]);
 
   const handleChangeResetTime = useCallback(
     (resetTime: number) => {
       setWstDates({ ...wstDates, resetTime });
     },
-    [setWstDates],
+    [setWstDates, wstDates],
   );
 
   const calcNextResetTime = useCallback(

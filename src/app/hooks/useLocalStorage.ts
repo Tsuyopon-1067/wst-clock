@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useCallback } from 'react';
 
 type UseLocalStorageType<T> = {
@@ -8,6 +10,9 @@ type UseLocalStorageType<T> = {
 
 export const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageType<T> => {
   const readValue = useCallback((): T => {
+    if (typeof window === 'undefined') {
+      return initialValue;
+    }
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
