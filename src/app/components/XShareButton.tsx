@@ -20,9 +20,8 @@ export const XShareButton = ({ text }: XShareButtonProps) => {
 
   return (
     <a
-      href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+      href={`https://twitter.com/share?ref_src=twsrc%5Etfw&text=${encodeURIComponent(text)}`}
       className="twitter-share-button"
-      data-text={text}
       data-show-count="false"
     >
       Post
