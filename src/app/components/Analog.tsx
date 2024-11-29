@@ -49,19 +49,19 @@ export const Analog = ({ time }: { time: WstTime }) => {
         <div className="absolute inset-0">
           {/* Hour hand */}
           <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 origin-top w-1.5 h-16 bg-black"
+            className="absolute left-1/2 top-1/2 will-change-transform -translate-x-1/2 origin-top w-1.5 h-16 bg-black"
             style={{ transform: `rotate(var(--degHour))` }}
           />
 
           {/* Minute hand */}
           <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 origin-top w-1 h-20 bg-black"
+            className="absolute left-1/2 top-1/2 will-change-transform -translate-x-1/2 origin-top w-1 h-20 bg-black"
             style={{ transform: `rotate(var(--degMin))` }}
           />
 
           {/* Second hand */}
           <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 origin-top w-0.5 h-24 bg-red-500"
+            className="absolute left-1/2 top-1/2 will-change-transform -translate-x-1/2 origin-top w-0.5 h-24 bg-red-500"
             style={{ transform: `rotate(var(--degSec))` }}
           />
 
