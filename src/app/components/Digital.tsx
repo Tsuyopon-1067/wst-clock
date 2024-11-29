@@ -1,9 +1,11 @@
-import { useClockType } from "../hooks/useClock";
+import { WstTime } from "../hooks/useWstClock";
 
-export const Digital = ({ time }: { time: useClockType }) => {
+export const Digital = ({ time }: { time: WstTime }) => {
   return (
-    <div>
-      {time.hour}:{time.minute}:{time.second}
+    <div className="text-center">
+      <span className="text-6xl font-black text-gray-700">
+        {time.hour}:{time.minute}:{time.second}
+      </span>
     </div>
   );
 }

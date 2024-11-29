@@ -5,6 +5,9 @@ export type useClockType = {
   hour: string;
   minute: string;
   second: string;
+  date: string;
+  year: number;
+  rewiwa: number;
 };
 
 export const useClock = () => {
