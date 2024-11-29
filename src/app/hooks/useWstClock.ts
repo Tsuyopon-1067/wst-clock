@@ -66,8 +66,7 @@ export const useWstClock = (): WstClockType => {
     const date = new Date();
     const offset = date.getTimezoneOffset() * 60000;
     const newRealWakeUpTime = Date.now() % ONE_DAY_MILLISECONDS - offset;
-    const nextDayMilliseconds = date.getTime() - (date.getTime() % ONE_DAY_MILLISECONDS) + ONE_DAY_MILLISECONDS;
-    const newNextResetTime = nextDayMilliseconds + wstDates.resetTime + offset;
+    const newNextResetTime = calcNextResetTime();
     const newWstDates = { ...wstDates, realWakeUpTime: newRealWakeUpTime, nextResetTime: newNextResetTime };
     setWstDates(newWstDates);
     storedData.setValue(newWstDates);
@@ -77,15 +76,27 @@ export const useWstClock = (): WstClockType => {
     setWstDates({ ...wstDates, resetTime });
   }, [setWstDates]);
 
+  const calcNextResetTime = useCallback(() => {
+    const date = new Date();
+    const zeroTime = date.getTime() - (date.getTime() % ONE_DAY_MILLISECONDS);
+    if (zeroTime + wstDates.resetTime < wstDates.realWakeUpTime) {
+      return zeroTime + ONE_DAY_MILLISECONDS + wstDates.resetTime;
+    }
+    return zeroTime + wstDates.resetTime;
+  }, [wstDates]);
+
   const save = () => {
+    wstDates.nextResetTime = calcNextResetTime();
     storedData.setValue(wstDates);
   };
 
   const isReseted = () => {
+    const date = new Date();
+    const localNextResetTime = wstDates.nextResetTime + date.getTimezoneOffset() * 60000;
     if (wstDates.realWakeUpTime === 0 || wstDates.nextResetTime === 0) {
       return false;
     }
-    if (new Date().getTime() < wstDates.nextResetTime) {
+    if (new Date().getTime() < localNextResetTime) {
       return true;
     }
     return false;
