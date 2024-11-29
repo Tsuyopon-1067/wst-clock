@@ -4,6 +4,8 @@ const nextConfig = {
     unoptimized: true
   },
   trailingSlash: true,
+  basePath: '/wst-clock',
+  assetPrefix: '/wst-clock',
 };
 
 module.exports = nextConfig;
