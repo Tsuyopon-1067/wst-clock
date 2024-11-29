@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { WstTime } from '../hooks/useWstClock';
+import { useEffect, useRef } from "react";
+import { WstTime } from "../hooks/useWstClock";
 
 export const Analog = ({ time }: { time: WstTime }) => {
   const clockRef = useRef<HTMLDivElement>(null);
@@ -8,7 +8,8 @@ export const Analog = ({ time }: { time: WstTime }) => {
   const HOUR_MILLISECONDS = 3600000;
   const MINUTE_MILLISECONDS = 60000;
 
-  const toDegree = (time: number, base: number) => ((time % base) / base) * 360 + 180;
+  const toDegree = (time: number, base: number) =>
+    ((time % base) / base) * 360 + 180;
 
   useEffect(() => {
     if (!clockRef.current) return;
@@ -18,9 +19,9 @@ export const Analog = ({ time }: { time: WstTime }) => {
     const degMin = toDegree(time.unix, HOUR_MILLISECONDS);
     const degSec = toDegree(time.unix, MINUTE_MILLISECONDS);
 
-    clockRef.current.style.setProperty('--degHour', `${degHour}deg`);
-    clockRef.current.style.setProperty('--degMin', `${degMin}deg`);
-    clockRef.current.style.setProperty('--degSec', `${degSec}deg`);
+    clockRef.current.style.setProperty("--degHour", `${degHour}deg`);
+    clockRef.current.style.setProperty("--degMin", `${degMin}deg`);
+    clockRef.current.style.setProperty("--degSec", `${degSec}deg`);
   }, [time]);
 
   return (
@@ -73,7 +74,7 @@ export const Analog = ({ time }: { time: WstTime }) => {
 
           <span
             className="absolute left-1/2 font-bold origin-center will-change-transform -translate-x-1/2"
-            style={{ top: '60%' }}
+            style={{ top: "60%" }}
           >
             WST
           </span>

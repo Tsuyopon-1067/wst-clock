@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
+import { useEffect } from "react";
 
 type XShareButtonProps = {
   text: string;
@@ -8,8 +8,8 @@ type XShareButtonProps = {
 
 export const XShareButton = ({ text }: XShareButtonProps) => {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://platform.x.com/widgets.js';
+    const script = document.createElement("script");
+    script.src = "https://platform.x.com/widgets.js";
     script.async = true;
     document.body.appendChild(script);
 
@@ -20,7 +20,9 @@ export const XShareButton = ({ text }: XShareButtonProps) => {
 
   return (
     <a
-      href={`https://twitter.com/share?ref_src=twsrc%5Etfw&text=${encodeURIComponent(text)}`}
+      href={`https://twitter.com/share?ref_src=twsrc%5Etfw&text=${encodeURIComponent(
+        text
+      )}`}
       className="twitter-share-button"
       data-show-count="false"
     >
