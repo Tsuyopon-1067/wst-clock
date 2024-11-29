@@ -33,7 +33,7 @@ const TabSwitcher = (wstClock: { wstClock: WstClockType }) => {
           <Analog time={wstClock.wstClock.wstTime} />
         </TabsContent>
       </Tabs>
-    </div >
+    </div>
   );
 };
 
