@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useClock } from './useClock'
 import { useLocalStorage } from './useLocalStorage';
+import { Dam } from 'lucide-react';
 
 export type WstTime = {
   hour: string;
@@ -27,7 +28,7 @@ type WstDates = {
   wakeUpTime: number;
   realWakeUpTime: number;
   resetTime: number;
-  isReseted: boolean;
+  nextResetTime: number;
 }
 
 export const useWstClock = (): WstClockType => {
@@ -35,7 +36,7 @@ export const useWstClock = (): WstClockType => {
   const clock = useClock();
   const realTime = clock.unix;
 
-  const storedData = useLocalStorage<WstDates>('wstDates', { wakeUpTime: 6 * 3600 * 1000, realWakeUpTime: 6 * 3600 * 1000, resetTime: 4 * 3600 * 1000, isReseted: false });
+  const storedData = useLocalStorage<WstDates>('wstDates', { wakeUpTime: 6 * 3600 * 1000, realWakeUpTime: 6 * 3600 * 1000, resetTime: 4 * 3600 * 1000, nextResetTime: 0 });
   const [wstDates, setWstDates] = useState<WstDates>(storedData.storedValue);
   const wstTimeDate = new Date(realTime - wstDates.realWakeUpTime + wstDates.wakeUpTime);
 
@@ -62,9 +63,12 @@ export const useWstClock = (): WstClockType => {
   }, [setWstDates]);
 
   const wakeUp = useCallback(() => {
-    const offset = new Date().getTimezoneOffset() * 60000;
+    const date = new Date();
+    const offset = date.getTimezoneOffset() * 60000;
     const newRealWakeUpTime = Date.now() % ONE_DAY_MILLISECONDS - offset;
-    const newWstDates = { ...wstDates, realWakeUpTime: newRealWakeUpTime, isReseted: true };
+    const nextDayMilliseconds = date.getTime() - (date.getTime() % ONE_DAY_MILLISECONDS) + ONE_DAY_MILLISECONDS;
+    const newNextResetTime = nextDayMilliseconds + wstDates.resetTime + offset;
+    const newWstDates = { ...wstDates, realWakeUpTime: newRealWakeUpTime, nextResetTime: newNextResetTime };
     setWstDates(newWstDates);
     storedData.setValue(newWstDates);
   }, [setWstDates]);
@@ -77,14 +81,25 @@ export const useWstClock = (): WstClockType => {
     storedData.setValue(wstDates);
   };
 
+  const isReseted = () => {
+    if (wstDates.realWakeUpTime === 0 || wstDates.nextResetTime === 0) {
+      return false;
+    }
+    if (new Date().getTime() < wstDates.nextResetTime) {
+      return true;
+    }
+    return false;
+  };
+
+
   return {
     wstTime,
     handleChangeWakeUpTime,
     wakeUp,
     handleChangeResetTime,
-    isReseted: wstDates.isReseted,
     wakeUpTime: wstDates.wakeUpTime,
     resetTime: wstDates.resetTime,
+    isReseted: isReseted(),
     save,
   };
 };
