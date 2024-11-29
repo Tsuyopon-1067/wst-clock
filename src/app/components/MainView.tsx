@@ -42,7 +42,7 @@ export const MainView = () => {
                     </button>
                   )
                 }
-                <div className='flex justify-end mx-3'>
+                <div className='flex justify-end my-3'>
                   <XShareButton text={postText} />
                 </div>
               </div>
