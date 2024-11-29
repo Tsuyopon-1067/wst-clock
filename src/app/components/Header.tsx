@@ -7,13 +7,15 @@ type HeaderProps = {
 
 export const Header = ({ isSettingsOpen, setIsSettingsOpen }: HeaderProps) => {
   return (
-    <header>
-      <div>hogehoge</div>
+    <header className={'bg-blue-400 py-2 px-3 flex justify-between'}>
+      <span className={'text-xl text-white font-bold'}>
+        WST Clock
+      </span>
       {
         isSettingsOpen ? (
-          <button onClick={() => setIsSettingsOpen(false)}>x</button>
+          <button onClick={() => setIsSettingsOpen(false)}><span className="text-xl text-white font-bold px-1">X</span></button>
         ) : (
-          <button onClick={() => setIsSettingsOpen(true)}><Settings /></button>
+          <button onClick={() => setIsSettingsOpen(true)}><Settings color="white" /></button>
         )
       }
     </header>
