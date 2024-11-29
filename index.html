@@ -1,91 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charSet="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preload" href="./assets/static/media/4473ecc91f70f139-s.p.woff" as="font" crossorigin=""
-        type="font/woff" />
-    <link rel="preload" href="./assets/static/media/463dafcda517f24f-s.p.woff" as="font" crossorigin=""
-        type="font/woff" />
-    <link rel="stylesheet" href="./assets/static/css/e9807fc3b853f73f.css" data-precedence="next" />
-    <link rel="preload" as="script" fetchPriority="low" href="./assets/static/chunks/webpack-c1030d0bef1560a3.js" />
-    <script src="./assets/static/chunks/4bd1b696-6a414143dd7cbf8c.js" async=""></script>
-    <script src="./assets/static/chunks/215-f0ba1622f7c39cdb.js" async=""></script>
-    <script src="./assets/static/chunks/main-app-fc9169c5277001df.js" async=""></script>
-    <script src="./assets/static/chunks/389-ac07759ee2b6174c.js" async=""></script>
-    <script src="./assets/static/chunks/app/page-e6cbc074533fd0ab.js" async=""></script>
-    <meta name="next-size-adjust" />
-    <title>WST Clock</title>
-    <meta name="description" content="Show WST Time" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="manifest" href="./manifest.json" type="application/manifest+json">
-    <script src="./assets/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WST Clock</title>
+  <link rel="manifest" href="./manifest.json" />
+  <script type="module" crossorigin src="./assets/index-CgmjbBNH.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-yY09BdEx.css">
 </head>
 
-<body class="__variable_1e4310 __variable_c3aa02 antialiased">
-    <div>
-        <header class="bg-blue-400 py-2 px-3 flex justify-between"><span class="text-xl text-white font-bold">WST
-                Clock</span><button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-settings">
-                    <path
-                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
-                    </path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg></button></header>
-        <main>
-            <div>
-                <div class="w-full max-w-2xl mx-auto">
-                    <div dir="ltr" data-orientation="horizontal" class="w-full">
-                        <div role="tablist" aria-orientation="horizontal" class="grid w-full grid-cols-2" tabindex="-1"
-                            data-orientation="horizontal" style="outline:none"><button type="button" role="tab"
-                                aria-selected="true" aria-controls="radix-:Rcvb:-content-tab1" data-state="active"
-                                id="radix-:Rcvb:-trigger-tab1"
-                                class="text-l font-bold py-1 text-gray-700 data-[state=inactive]:text-gray-300 data-[state=active]:border-b-2 data-[state=active]:border-blue-400"
-                                tabindex="-1" data-orientation="horizontal"
-                                data-radix-collection-item="">デジタル</button><button type="button" role="tab"
-                                aria-selected="false" aria-controls="radix-:Rcvb:-content-tab2" data-state="inactive"
-                                id="radix-:Rcvb:-trigger-tab2"
-                                class="text-l font-bold py-1 text-gray-700 data-[state=inactive]:text-gray-300 data-[state=active]:border-b-2 data-[state=active]:border-blue-400"
-                                tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">アナログ</button>
-                        </div>
-                        <div data-state="active" data-orientation="horizontal" role="tabpanel"
-                            aria-labelledby="radix-:Rcvb:-trigger-tab1" id="radix-:Rcvb:-content-tab1" tabindex="0"
-                            class="mt-6" style="animation-duration:0s">
-                            <div class="space-y-4">
-                                <div class="text-center"><span
-                                        class="text-6xl font-black text-gray-700">18<!-- -->:<!-- -->53<!-- -->:<!-- -->54</span><span
-                                        class="ml-1 font-bold">WST</span></div>
-                            </div>
-                        </div>
-                        <div data-state="inactive" data-orientation="horizontal" role="tabpanel"
-                            aria-labelledby="radix-:Rcvb:-trigger-tab2" hidden="" id="radix-:Rcvb:-content-tab2"
-                            tabindex="0" class="mt-6"></div>
-                    </div>
-                </div>
-                <div class="mx-2">
-                    <div class="flex justify-center gap-3 items-center my-4">
-                        <div class="flex flex-col w-fit pl-2"><span
-                                class="text-gray-700 text-sm font-bold whitespace-nowrap">令和<!-- -->6<!-- -->年</span><span
-                                class="text-gray-700 text-sm font-bold whitespace-nowrap">2024<!-- -->年</span></div>
-                        <span class="text-gray-700 font-bold" style="font-size:2.3rem">11月29日（金）</span>
-                    </div><button
-                        class="w-full bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded-lg text-2xl shadow-md w-64 tracking-widest"><span
-                            class="pr-8">起</span><span class="pl-8">床</span></button>
-                    <div class="flex justify-end my-3"><a
-                            href="https://twitter.com/share?ref_src=twsrc%5Etfw&amp;text=%E7%A7%81%E3%81%AF%E4%BB%8A%EF%BC%8C18%E6%99%8253%E5%88%8654%E7%A7%92%EF%BC%88WST%E6%A8%99%E6%BA%96%E6%99%82%EF%BC%89%E3%81%A7%E7%94%9F%E3%81%8D%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%EF%BC%8E"
-                            class="twitter-share-button" data-show-count="false">Post</a></div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="./assets/static/chunks/webpack-c1030d0bef1560a3.js" async=""></script>
-    <script>(self.__next_f = self.__next_f || []).push([0])</script>
-    <script>self.__next_f.push([1, "4:\"$Sreact.fragment\"\n5:I[9275,[],\"\"]\n6:I[1343,[],\"\"]\n7:I[2425,[\"389\",\"static/chunks/389-ac07759ee2b6174c.js\",\"931\",\"static/chunks/app/page-e6cbc074533fd0ab.js\"],\"MainView\"]\n8:I[3120,[],\"OutletBoundary\"]\na:I[3120,[],\"MetadataBoundary\"]\nc:I[3120,[],\"ViewportBoundary\"]\ne:I[6130,[],\"\"]\n1:HL[\"./assets/static/media/4473ecc91f70f139-s.p.woff\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff\"}]\n2:HL[\"./assets/static/media/463dafcda517f24f-s.p.woff\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff\"}]\n3:HL[\"./assets/static/css/e9807fc3b853f73f.css\",\"style\"]\n"])</script>
-    <script>self.__next_f.push([1, "0:{\"P\":null,\"b\":\"qyM63Qnuu8dq1omTzV4eC\",\"p\":\"\",\"c\":[\"\",\"\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$4\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"./assets/static/css/e9807fc3b853f73f.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"__variable_1e4310 __variable_c3aa02 antialiased\",\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}]}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$4\",\"c\",{\"children\":[[\"$\",\"$L7\",null,{}],null,[\"$\",\"$L8\",null,{\"children\":\"$L9\"}]]}],{},null]},null],[\"$\",\"$4\",\"h\",{\"children\":[null,[\"$\",\"$4\",\"2KHIGPw6Rm6g6_lsBftUh\",{\"children\":[[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"$Lc\",null,{\"children\":\"$Ld\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\"}]]}]]}]]],\"m\":\"$undefined\",\"G\":[\"$e\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script>
-    <script>self.__next_f.push([1, "d:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\nb:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"1\",{\"children\":\"WST Clock\"}],[\"$\",\"meta\",\"2\",{\"name\":\"description\",\"content\":\"Show WST Time\"}],[\"$\",\"link\",\"3\",{\"rel\":\"icon\",\"href\":\"./favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n"])</script>
-    <script>self.__next_f.push([1, "9:null\n"])</script>
+<body>
+  <div id="root"></div>
 </body>
 
 </html>
