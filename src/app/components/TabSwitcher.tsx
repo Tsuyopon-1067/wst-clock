@@ -4,10 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs';
 import React from 'react';
 import { Digital } from './Digital';
 import { Analog } from './Analog';
-import { useWstClock } from '../hooks/useWstClock';
+import { WstClockType } from '../hooks/useWstClock';
 
-const TabSwitcher = () => {
-  const wstClock = useWstClock();
+const TabSwitcher = (wstClock: { wstClock: WstClockType }) => {
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
       <div className="p-6">
@@ -18,11 +17,11 @@ const TabSwitcher = () => {
           </TabsList>
           <TabsContent value="tab1" className="mt-6">
             <div className="space-y-4">
-              <Digital time={wstClock.wstTime} />
+              <Digital time={wstClock.wstClock.wstTime} />
             </div>
           </TabsContent>
           <TabsContent value="tab2" className="mt-6">
-            <Analog time={wstClock.wstTime} />
+            <Analog time={wstClock.wstClock.wstTime} />
           </TabsContent>
         </Tabs>
       </div>

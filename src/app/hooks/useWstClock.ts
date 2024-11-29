@@ -1,13 +1,21 @@
 import { useCallback, useState } from "react";
-import { useClock, useClockType } from "./useClock"
+import { useClock } from "./useClock"
 import { useLocalStorage } from "./useLocalStorage";
 
-type WstClockType = {
-  wstTime: useClockType;
+export type WstClockType = {
+  wstTime: {
+    hour: string;
+    minute: string;
+    second: string;
+    unix: number;
+  };
   handleChangeWakeUpTime: (wakeUpTime: number) => void;
   handleChangeRealWakeUpTime: () => void;
   handleChangeResetTime: (resetTime: number) => void;
+  wakeUpTime: number;
+  resetTime: number;
   isReseted: boolean;
+  save: () => void;
 }
 
 type WstDates = {
@@ -42,11 +50,18 @@ export const useWstClock = (): WstClockType => {
     setWstDates({ ...wstDates, resetTime });
   }, [setWstDates]);
 
+  const save = () => {
+    storedData.setValue(wstDates);
+  }
+
   return {
     wstTime,
     handleChangeWakeUpTime,
     handleChangeRealWakeUpTime,
     handleChangeResetTime,
     isReseted: wstDates.isReseted,
+    wakeUpTime: wstDates.wakeUpTime,
+    resetTime: wstDates.resetTime,
+    save,
   };
 };
