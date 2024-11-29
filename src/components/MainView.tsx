@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import TabSwitcher from './TabSwitcher';
-import { Header } from './Header';
-import { SettingView } from './SettingView';
-import { useWstClock } from '../hooks/useWstClock';
-import { XShareButton } from './XShareButton';
+import { useState } from "react";
+import TabSwitcher from "./TabSwitcher";
+import { Header } from "./Header";
+import { SettingView } from "./SettingView";
+import { useWstClock } from "../hooks/useWstClock";
+import { XShareButton } from "./XShareButton";
 
 export const MainView = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -13,7 +13,10 @@ export const MainView = () => {
   const postText = `私は今，${wstClock.wstTime.hour}時${wstClock.wstTime.minute}分${wstClock.wstTime.second}秒（WST標準時）で生きています．`;
   return (
     <div>
-      <Header isSettingsOpen={isSettingsOpen} setIsSettingsOpen={setIsSettingsOpen} />
+      <Header
+        isSettingsOpen={isSettingsOpen}
+        setIsSettingsOpen={setIsSettingsOpen}
+      />
       <main>
         {isSettingsOpen ? (
           <SettingView wstClock={wstClock} />
@@ -30,7 +33,10 @@ export const MainView = () => {
                     {wstClock.wstTime.year}年
                   </span>
                 </div>
-                <span className="text-gray-700 font-bold" style={{ fontSize: '2.3rem' }}>
+                <span
+                  className="text-gray-700 font-bold"
+                  style={{ fontSize: "2.3rem" }}
+                >
                   {wstClock.wstTime.date}
                 </span>
               </div>

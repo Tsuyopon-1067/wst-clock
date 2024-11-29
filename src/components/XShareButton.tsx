@@ -1,32 +1,21 @@
-"use client";
-
-import { useEffect } from "react";
-
 type XShareButtonProps = {
   text: string;
 };
 
 export const XShareButton = ({ text }: XShareButtonProps) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://platform.x.com/widgets.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  const handleShare = () => {
+    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      text + "\nhttps://tsuyopon-1067.github.io/wst-clock/"
+    )}`;
+    window.open(shareUrl);
+  };
 
   return (
-    <a
-      href={`https://twitter.com/share?ref_src=twsrc%5Etfw&text=${encodeURIComponent(
-        text
-      )}`}
-      className="twitter-share-button"
-      data-show-count="false"
+    <button
+      onClick={handleShare}
+      className="bg-black rounded text-white p-2 font-bold"
     >
-      Post
-    </a>
+      Xでシェア
+    </button>
   );
 };
