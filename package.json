@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:clean": "rm -rf .next out && next build",
     "start": "next start",
     "lint": "eslint './**/*.{js,jsx,ts,tsx,cjs,mjs}'",
     "format": "prettier . --write",
