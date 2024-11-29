@@ -22,7 +22,7 @@ const config: Config = {
           700: '#66E589',
           800: '#88ED8F',
           900: '#AAF3AA',
-          DEFAUL: '#D4F8CCT',
+          DEFAUL: '#00caaf',
         },
       },
     },
