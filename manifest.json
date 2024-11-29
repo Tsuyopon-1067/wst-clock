@@ -2,7 +2,7 @@
   "name": "WST Clock",
   "short_name": "WST",
   "description": "showwing the current time in WST",
-  "start_url": ".",
+  "start_url": "https://tsuyopon-1067.github.io/wst-clock/",
   "display": "standalone",
   "theme_color": "#00caaf",
   "background_color": "#feffff",
