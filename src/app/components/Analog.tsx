@@ -24,7 +24,7 @@ export const Analog = ({ time }: { time: WstTime }) => {
   }, [time]);
 
   return (
-    <div className="flex justify-center mb-4">
+    <div className="flex justify-center">
       <div ref={clockRef} className="relative w-64 h-64 rounded-full border-4 border-gray-800 bg-white">
         {/* Clock numbers */}
         {[...Array(12)].map((_, i) => {

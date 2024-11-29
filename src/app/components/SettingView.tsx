@@ -29,7 +29,7 @@ export const SettingView = (wstClock: { wstClock: WstClockType }) => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mt-2">
-        <button className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded-lg text-lg shadow-md w-64">起床</button>
+        <button className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded-lg text-lg shadow-md w-64" onClick={wstClock.wstClock.wakeUp}>起床</button>
         <button className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded-lg text-lg shadow-md w-64" onClick={wstClock.wstClock.save}>保存</button>
       </div>
     </div>

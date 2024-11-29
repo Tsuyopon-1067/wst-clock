@@ -21,6 +21,7 @@ export type WstClockType = {
   resetTime: number;
   isReseted: boolean;
   save: () => void;
+  wakeUp: () => void;
 }
 
 type WstDates = {
@@ -60,7 +61,7 @@ export const useWstClock = (): WstClockType => {
     setWstDates({ ...wstDates, wakeUpTime });
   }, [setWstDates]);
 
-  const handleChangeRealWakeUpTime = useCallback(() => {
+  const wakeUp = useCallback(() => {
     const newRealWakeUpTime = Date.now() % ONE_DAY_MILLISECONDS;
     setWstDates({ ...wstDates, realWakeUpTime: newRealWakeUpTime });
   }, [setWstDates]);
@@ -76,7 +77,7 @@ export const useWstClock = (): WstClockType => {
   return {
     wstTime,
     handleChangeWakeUpTime,
-    handleChangeRealWakeUpTime,
+    wakeUp,
     handleChangeResetTime,
     isReseted: wstDates.isReseted,
     wakeUpTime: wstDates.wakeUpTime,
