@@ -59,7 +59,7 @@ export const useWstClock = (): WstClockType => {
   }
 
   const handleChangeWakeUpTime = useCallback((wakeUpTime: number) => {
-    storedData.setValue({ ...wstDates, wakeUpTime });
+    setWstDates({ ...wstDates, wakeUpTime });
   }, [setWstDates]);
 
   const wakeUp = useCallback(() => {
