@@ -66,7 +66,9 @@ export const Analog = ({ time }: { time: WstTime }) => {
           />
 
           {/* Center dot */}
-          <div className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full bg-black -translate-x-1/2 -translate-y-1/2 z-10" />
+          <div className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full bg-black will-change-transform -translate-x-1/2 -translate-y-1/2 z-10" />
+
+          <span className='absolute left-1/2 font-bold origin-center will-change-transform -translate-x-1/2' style={{ top: '60%' }}>WST</span>
         </div>
       </div>
     </div>
